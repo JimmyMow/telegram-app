@@ -1,0 +1,4 @@
+<h2>Posts:</h2>
+{{#each post in posts}}
+  <li>{{#link-to "user.post" post}}{{post.body}}{{/link-to}}</li>
+{{/each}}

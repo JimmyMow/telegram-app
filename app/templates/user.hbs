@@ -1,0 +1,14 @@
+<ul>
+  <li>Username: {{username}}</li>
+  <li>Email: {{email}}</li>
+  <li>Handle: {{handle}}</li>
+  <li>Password: {{password}}</li>
+</ul>
+
+{{#link-to "user.index"}}Posts{{/link-to}}
+{{#link-to "user.followers"}}Followers{{/link-to}}
+{{#link-to "user.following"}}Following{{/link-to}}
+
+<ul>
+  {{outlet}}
+</ul>

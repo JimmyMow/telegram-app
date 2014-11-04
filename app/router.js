@@ -6,6 +6,15 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route("home", { path: "/" });
+  this.route("login");
+  this.route("newpassword", { path: "/new_password" });
+
+  this.resource("user", { path: "/:user_id"}, function(){
+    this.route("followers");
+    this.route("following");
+    this.route("post", { path: "/:post_id" });
+  });
 });
 
 export default Router;
