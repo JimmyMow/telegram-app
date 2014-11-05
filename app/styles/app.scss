@@ -1,0 +1,21 @@
+@import 'reset';
+@import 'home';
+@import 'user';
+
+
+// GLOBAL STYLES
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+// GLOBAL CLASSES
+
+.clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

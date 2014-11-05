@@ -1,0 +1,104 @@
+.user-container {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.user-header {
+  width: 50%;
+  margin: 20px auto;
+  text-align: center;
+
+  img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .user-name {
+    margin: 15px 0 5px 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .user-username {
+    margin: 5px 0 25px 0;
+    font-size: 13px;
+  }
+}
+
+.user-nav {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0;
+  text-align: center;
+
+  a {
+    font-size: 20px;
+    text-decoration: none;
+    padding: 17px 20px;
+    color: #008CB8;
+    font-weight: 300;
+
+    &.active {
+      border-bottom: 3px solid #008CB8;
+      color: darkgray;
+    }
+  }
+}
+
+.user-list {
+  padding: 0;
+  li {
+    list-style-type: none;
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0;
+
+    .user-list-container {
+      padding:  0 20px;
+
+      img {
+        padding-right: 10px;
+      }
+
+      .right-side {
+        display: inline-block;
+        vertical-align: top;
+      }
+
+      .user-link {
+        display: inline-block;
+        vertical-align: top;
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+
+        &:hover {
+          color: #008CB8;
+          text-decoration: underline;
+        }
+
+      }
+
+      .post-body {
+        margin: 8px 0 15px 0;
+      }
+
+      .craeted-at {
+        color: darkgray;
+      }
+
+      .delete {
+        a {
+          color: #008CB8;
+          text-decoration: none;
+        }
+      }
+
+
+      form {
+        display: inline-block;
+        float: right;
+        margin-top: 8px;
+      }
+    }
+  }
+}

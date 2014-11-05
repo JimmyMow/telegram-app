@@ -1,30 +1,27 @@
 import DS from 'ember-data';
 
 var User = DS.Model.extend({
-  username: DS.attr("string"),
+  name: DS.attr("string"),
   email: DS.attr("string"),
-  handle: DS.attr("string"),
-  password: DS.attr("string"),
-  posts: DS.hasMany("posts", {async: true})
+  picture: DS.attr("string"),
+  password: DS.attr("string")
 });
 
 User.reopenClass({
   FIXTURES: [
     {
-      id: 1,
-      username: "JimmyMow",
+      id: "JimmyMow",
+      name: "Jack Mallers",
       email: "jimmymowschess@gmail.com",
-      handle: "jackmallers",
-      password: "12345678",
-      posts: [1, 4]
+      picture: "https://lh6.googleusercontent.com/-hBbaFeCzpFs/AAAAAAAAAAI/AAAAAAAAANA/r02VbznNRIs/w48-c-h48/photo.jpg",
+      password: "12345678"
     },
     {
-      id: 2,
-      username: "Fischer",
+      id: "Fischer",
+      name: "Bobby Fischer",
       email: "bobbyfischer@gmail.com",
-      handle: "bobbyfischer",
-      password: "12345678",
-      posts: [2, 3]
+      picture: "https://pbs.twimg.com/profile_images/1264692865/bobby_fischer_01_normal.jpg",
+      password: "12345678"
     }
   ]
 });

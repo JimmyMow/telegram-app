@@ -1,14 +1,21 @@
-<ul>
-  <li>Username: {{username}}</li>
-  <li>Email: {{email}}</li>
-  <li>Handle: {{handle}}</li>
-  <li>Password: {{password}}</li>
-</ul>
+<div class="user-container">
+  <div class="user-header">
+    <img {{bind-attr src=picture}}>
+    <h4 class="user-name">{{name}}</h4>
+    <p class="user-username">@{{id}}</p>
 
-{{#link-to "user.index"}}Posts{{/link-to}}
-{{#link-to "user.followers"}}Followers{{/link-to}}
-{{#link-to "user.following"}}Following{{/link-to}}
+    <form>
+      <input type="submit" value="Follow">
+    </form>
+  </div>
 
-<ul>
-  {{outlet}}
-</ul>
+  <nav class="user-nav">
+    {{#link-to "user.index"}}Posts{{/link-to}}
+    {{#link-to "user.followers"}}Followers{{/link-to}}
+    {{#link-to "user.following"}}Following{{/link-to}}
+  </nav>
+
+  <ul class="user-list">
+    {{outlet}}
+  </ul>
+</div>

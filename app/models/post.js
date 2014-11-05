@@ -12,25 +12,25 @@ Post.reopenClass({
       id: 1,
       body: "Bobby Fischer is the greatest chess player of all time",
       createdAt: new Date(),
-      user: 1
+      user: "JimmyMow"
     },
     {
       id: 2,
       body: "I am the greatest player of all time",
       createdAt: new Date(),
-      user: 2
+      user: "Fischer"
     },
     {
       id: 3,
       body: "I'm the champ #FuckBorris",
       createdAt: new Date(),
-      user: 2
+      user: "Fischer"
     },
     {
       id: 4,
       body: "Let's hoop",
       createdAt: new Date(),
-      user: 1
+      user: "JimmyMow"
     }
   ]
 });

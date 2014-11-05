@@ -1,4 +1,19 @@
-<h2>Posts:</h2>
-{{#each post in posts}}
-  <li>{{#link-to "user.post" post}}{{post.body}}{{/link-to}}</li>
+{{#each}}
+  <li>
+    <div class="user-list-container">
+      <img src="https://lh6.googleusercontent.com/-hBbaFeCzpFs/AAAAAAAAAAI/AAAAAAAAANA/r02VbznNRIs/w48-c-h48/photo.jpg">
+      <div class="right-side">
+        {{#link-to "user" this.user class="user-link"}}{{user.name}}{{/link-to}}
+        <p class="post-body">{{body}}</p>
+        <p>
+          <span class="craeted-at">{{time-delta-in-words completedAt}}</span>
+          <span class="dot">&#8729;</span>
+          <span class="delete">
+            {{#link-to ""}}Delete{{/link-to}}
+          </span>
+        </p>
+        </p>
+      </div>
+    </div>
+  </li>
 {{/each}}
