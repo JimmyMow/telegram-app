@@ -1,0 +1,26 @@
+.dashboard-post-form {
+  margin: 20px 0;
+  textarea {
+    border: none;
+    overflow: auto;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    height: 150px;
+    width: 100%;
+    resize: none;
+    font-size: 18px;
+  }
+
+  .post-chars-left {
+    color: darkgray;
+    float: left;
+  }
+
+  .post-submit-container {
+    text-align: right;
+    padding: 0 25px;
+  }
+}

@@ -1,5 +1,5 @@
 .user-container {
-  width: 60%;
+  width: 55%;
   margin: 0 auto;
 }
 
@@ -47,58 +47,61 @@
 
 .user-list {
   padding: 0;
-  li {
-    list-style-type: none;
-    border-bottom: 1px solid #ccc;
-    padding: 20px 0;
+}
 
-    .user-list-container {
-      padding:  0 20px;
 
-      img {
-        padding-right: 10px;
+// User list styles
+.user-list {
+  list-style-type: none;
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0;
+
+  .user-list-container {
+    padding:  0 20px;
+
+    img {
+      padding-right: 10px;
+    }
+
+    .right-side {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .user-link {
+      display: inline-block;
+      vertical-align: top;
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+
+      &:hover {
+        color: #008CB8;
+        text-decoration: underline;
       }
 
-      .right-side {
-        display: inline-block;
-        vertical-align: top;
-      }
+    }
 
-      .user-link {
-        display: inline-block;
-        vertical-align: top;
+    .post-body {
+      margin: 8px 0 15px 0;
+    }
+
+    .craeted-at {
+      color: darkgray;
+    }
+
+    .delete {
+      a {
+        color: #008CB8;
         text-decoration: none;
-        color: black;
-        font-weight: bold;
-
-        &:hover {
-          color: #008CB8;
-          text-decoration: underline;
-        }
-
       }
-
-      .post-body {
-        margin: 8px 0 15px 0;
-      }
-
-      .craeted-at {
-        color: darkgray;
-      }
-
-      .delete {
-        a {
-          color: #008CB8;
-          text-decoration: none;
-        }
-      }
+    }
 
 
-      form {
-        display: inline-block;
-        float: right;
-        margin-top: 8px;
-      }
+    form {
+      display: inline-block;
+      float: right;
+      margin-top: 8px;
     }
   }
 }

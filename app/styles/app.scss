@@ -1,6 +1,7 @@
 @import 'reset';
 @import 'home';
 @import 'user';
+@import 'dashboard';
 
 
 // GLOBAL STYLES
@@ -8,6 +9,22 @@
 body {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
+}
+
+h3 {
+  color: darkgray;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.app-nav {
+  text-align: center;
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+
+  img {
+    height: 35px;
+  }
 }
 
 // GLOBAL CLASSES
