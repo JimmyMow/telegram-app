@@ -1,7 +1,8 @@
 <h2 class="sign-in-form-header">Get going ...</h2>
-<form>
-  <input type="text" placeholder="Enter your username ..." class='username-input'>
-  <input type="password" placeholder="Enter your password ..." class='password-input'>
+
+<form {{action "login" on="submit"}}>
+  {{input value=username type="text" placeholder="Enter your username ..." class="username-input"}}
+  {{input value=password type="password" placeholder="Enter your password ..." class="password-input"}}
 
   <div class="call-to-action-options clearfix">
     <input type="submit" value="Log in">
