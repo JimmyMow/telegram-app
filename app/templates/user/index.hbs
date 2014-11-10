@@ -12,15 +12,19 @@
         {{#link-to "user" this.user class="user-link"}}{{user.name}}{{/link-to}}
         <p class="post-body">{{body}}</p>
         <p>
-          <span class="craeted-at">{{time-delta-in-words completedAt}}</span>
-          <span class="dot">&#8729;</span>
-          <span class="delete">
-            <a href="#" {{action "repost" id}}>Repost</a>
-          </span>
-          <span class="dot">&#8729;</span>
-          <span class="delete">
-            <a href="#" {{action "delete" id}}>Delete</a>
-          </span>
+          <span class="created-at">{{time-delta-in-words completedAt}}</span>
+          {{#if currentUser}}
+            {{#if isOwner}}
+            <span class="dot">&#8729;</span>
+            <span class="delete">
+              <a href="#" {{action "repost" id}}>Repost</a>
+            </span>
+            {{/if}}
+            <span class="dot">&#8729;</span>
+            <span class="delete">
+              <a href="#" {{action "delete" id}}>Delete</a>
+            </span>
+          {{/if}}
         </p>
       </div>
     </div>

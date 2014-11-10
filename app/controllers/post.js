@@ -4,6 +4,20 @@ var PostController = Ember.ObjectController.extend({
 
   currentUser: Ember.computed.alias('controllers.application.currentUser'),
 
+  isOwner: function() {
+    var currentUser, user;
+
+    this.get("currentUser").then(function(record) {
+      currentUser = record.get("id");
+    });
+
+    this.get("user").then(function(record) {
+      user = record.get("id");
+    });
+
+    return currentUser === user ? true : false;
+  }.property("currentUser", "user"),
+
   actions: {
     repost: function() {
       var post = this.store.createRecord('post', {

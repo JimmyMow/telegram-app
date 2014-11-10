@@ -13,7 +13,6 @@ var DashboardController = Ember.ArrayController.extend({
 
   actions: {
     createPost: function() {
-      var self = this;
       var postBody = this.get('postBody');
 
       if (!postBody.trim()) {
