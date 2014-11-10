@@ -1,7 +1,7 @@
 {{partial "navbar"}}
 <div class="user-container">
-  <form class="dashboard-post-form">
-    {{textarea value=name placeholder="What's happening?" autofocus="autofocus"}}
+  <form class="dashboard-post-form" {{action "createPost" on="submit"}}>
+    {{textarea value=postBody placeholder="What's happening?" autofocus="autofocus"}}
 
 
     <p class="post-chars-left">{{postLength}} characters left</p>

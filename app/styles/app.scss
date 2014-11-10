@@ -25,6 +25,20 @@ h3 {
   img {
     height: 35px;
   }
+
+  .right-nav {
+    float: right;
+
+    img {
+      display: inline-block;
+    }
+
+    .nav-username {
+      display: inline-block;
+      vertical-align: top;
+      margin-top: 10px;
+    }
+  }
 }
 
 // GLOBAL CLASSES

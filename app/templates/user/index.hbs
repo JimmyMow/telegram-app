@@ -1,6 +1,12 @@
-{{#each}}
+{{#each itemController="post"}}
   <li class="user-list">
     <div class="user-list-container">
+      {{#if repost}}
+        <p class="repost">
+          <i class="fa fa-retweet repost-icon"></i>
+          Reposted by {{repost.id}}
+        </p>
+      {{/if}}
       <img src="https://lh6.googleusercontent.com/-hBbaFeCzpFs/AAAAAAAAAAI/AAAAAAAAANA/r02VbznNRIs/w48-c-h48/photo.jpg">
       <div class="right-side">
         {{#link-to "user" this.user class="user-link"}}{{user.name}}{{/link-to}}
@@ -9,11 +15,11 @@
           <span class="craeted-at">{{time-delta-in-words completedAt}}</span>
           <span class="dot">&#8729;</span>
           <span class="delete">
-            {{#link-to ""}}Repost{{/link-to}}
+            <a href="#" {{action "repost" id}}>Repost</a>
           </span>
           <span class="dot">&#8729;</span>
           <span class="delete">
-            {{#link-to ""}}Delete{{/link-to}}
+            <a href="#" {{action "delete" id}}>Delete</a>
           </span>
         </p>
       </div>

@@ -1,12 +1,16 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  needs: ['application'],
+
+  currentUser: Ember.computed.alias('controllers.application.currentUser'),
+
   content: {},
+
   actions: {
     createUser: function() {
+       var self = this;
        var data = this.getProperties("name", "username", "email", "password");
-
-       console.log(data);
 
       var user = this.store.createRecord('user', {
         id: data.username,
@@ -16,8 +20,11 @@ export default Ember.Controller.extend({
         password: data.password
       });
 
-      user.save();
-      console.log(user);
+      user.save().then(function() {
+        self.set("currentUser", self.store.find("user", user.id));
+        self.transitionToRoute('dashboard');
+      });
+
     }
   }
 });

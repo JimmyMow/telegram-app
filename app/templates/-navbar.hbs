@@ -2,4 +2,11 @@
   {{#link-to "dashboard"}}
     <img src="images/telegram-logo.png"/>
   {{/link-to}}
+
+  {{#if currentUser}}
+    <div class="right-nav">
+      <img {{bind-attr src=currentUser.picture}}>
+      <p class="nav-username">{{currentUser.id}}</p>
+    </div>
+  {{/if}}
 </nav>
