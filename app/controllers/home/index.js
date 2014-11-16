@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
       });
 
       user.save().then(function() {
-        self.set("currentUser", self.store.find("user", user.id));
+        self.set("currentUser", user);
         self.transitionToRoute('dashboard');
       });
 

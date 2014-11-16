@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
       this.store.find("user", data.username).then(function(record) {
 
         if( data.password === record.get("password") ) {
-          self.set("currentUser", self.store.find("user", record.id));
+          self.set("currentUser", record);
           self.transitionToRoute('dashboard');
         } else {
           alert("username or password was wrong");

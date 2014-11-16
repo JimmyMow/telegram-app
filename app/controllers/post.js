@@ -4,33 +4,28 @@ var PostController = Ember.ObjectController.extend({
 
   currentUser: Ember.computed.alias('controllers.application.currentUser'),
 
-  isOwner: function() {
-    var currentUser, user;
+  isOwner: false,
 
-    this.get("currentUser").then(function(record) {
-      currentUser = record.get("id");
+  checkIfOwner: function() {
+    var _this = this;
+    this.get('user').then(function(record) {
+      if ( _this.get('currentUser.id') === record.get('id') ) {
+        _this.set("isOwner", true);
+        console.log(_this.get('isOwner'));
+      }
     });
-
-    this.get("user").then(function(record) {
-      user = record.get("id");
-    });
-
-    return currentUser === user ? true : false;
-  }.property("currentUser", "user"),
+  }.on('init'),
 
   actions: {
     repost: function() {
       var post = this.store.createRecord('post', {
         body: this.get("body"),
         createdAt: this.get("createdAt"),
+        repost: this.get("currentUser")
       });
 
       this.get("user").then(function(record){
         post.set("user", record);
-      });
-
-      this.get("currentUser").then(function(record) {
-        post.set("repost", record);
       });
 
       post.save();

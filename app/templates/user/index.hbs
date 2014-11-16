@@ -14,16 +14,18 @@
         <p>
           <span class="created-at">{{time-delta-in-words completedAt}}</span>
           {{#if currentUser}}
+            {{#unless isOwner}}
+              <span class="dot">&#8729;</span>
+              <span class="delete">
+                <a href="#" {{action "repost" id}}>Repost</a>
+              </span>
+            {{/unless}}
             {{#if isOwner}}
-            <span class="dot">&#8729;</span>
-            <span class="delete">
-              <a href="#" {{action "repost" id}}>Repost</a>
-            </span>
+              <span class="dot">&#8729;</span>
+              <span class="delete">
+                <a href="#" {{action "delete" id}}>Delete</a>
+              </span>
             {{/if}}
-            <span class="dot">&#8729;</span>
-            <span class="delete">
-              <a href="#" {{action "delete" id}}>Delete</a>
-            </span>
           {{/if}}
         </p>
       </div>
