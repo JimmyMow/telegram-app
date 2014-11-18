@@ -5,12 +5,10 @@ export default Ember.Controller.extend({
 
   currentUser: Ember.computed.alias('controllers.application.currentUser'),
 
-  content: {},
-
   actions: {
     createUser: function() {
-       var self = this;
-       var data = this.getProperties("name", "username", "email", "password");
+      var self = this;
+      var data = this.getProperties("name", "username", "email", "password");
 
       var user = this.store.createRecord('user', {
         id: data.username,
@@ -24,7 +22,6 @@ export default Ember.Controller.extend({
         self.set("currentUser", user);
         self.transitionToRoute('dashboard');
       });
-
     }
   }
 });

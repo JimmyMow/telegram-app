@@ -1,10 +1,11 @@
-{{partial "navbar"}}
+{{navbar-object currentUser=currentUser}}
+
 <div class="user-container">
   <form class="dashboard-post-form" {{action "createPost" on="submit"}}>
     {{textarea value=postBody placeholder="What's happening?" autofocus="autofocus"}}
 
 
-    <p class="post-chars-left">{{postLength}} characters left</p>
+    <p class="post-chars-left" {{bind-attr class="belowLimit"}}>{{postCharactersLeft}} characters left</p>
     <div class="post-submit-container">
       <input type="submit" value="Publish" class="publish-post">
     </div>

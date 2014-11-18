@@ -1,0 +1,33 @@
+<li class="user-list">
+  <div class="user-list-container">
+    {{#if post.repost}}
+      <p class="repost">
+        <i class="fa fa-retweet repost-icon"></i>
+        Reposted by {{post.repost.id}}
+      </p>
+    {{/if}}
+    <img src="https://lh6.googleusercontent.com/-hBbaFeCzpFs/AAAAAAAAAAI/AAAAAAAAANA/r02VbznNRIs/w48-c-h48/photo.jpg">
+    <div class="right-side">
+      {{#link-to "user" post.user class="user-link"}}{{post.user.name}}{{/link-to}}
+      <p class="post-body">{{post.body}}</p>
+      <p>
+        <span class="created-at">{{time-delta-in-words completedAt}}</span>
+        {{#if currentUser}}
+          {{#unless belongsToCurrentUser}}
+            <span class="dot">&#8729;</span>
+            <span class="delete">
+              <a href="#" {{action "repost" id}}>Repost</a>
+            </span>
+          {{/unless}}
+          {{#if belongsToCurrentUser}}
+            <span class="dot">&#8729;</span>
+            <span class="delete">
+              <a href="#" {{action "delete" id}}>Delete</a>
+            </span>
+          {{/if}}
+        {{/if}}
+      </p>
+    </div>
+  </div>
+</li>
+

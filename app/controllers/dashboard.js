@@ -1,22 +1,35 @@
 import Ember from 'ember';
 
-var DashboardController = Ember.ArrayController.extend({
+export default Ember.ArrayController.extend({
   needs: ['application'],
 
   currentUser: Ember.computed.alias('controllers.application.currentUser'),
 
-  postLength: 140,
+  belowLimit: false,
 
-  postKey: function(){
-      this.set("postLength", 140 - this.get('postBody').length);
-  }.observes('postBody'),
+  varifyUser: function() {
+    if( !this.get('currentUser') ) {
+      this.transitionToRoute('/login');
+    }
+  }.on('init'),
+
+  postCharactersLeft: function() {
+    var returnVal = 140 - (this.get('postBody') || '').length;
+
+    if( returnVal < 0 ) {
+      this.set('belowLimit', true);
+    }
+
+    return returnVal;
+  }.property('postBody'),
 
 
   actions: {
     createPost: function() {
       var postBody = this.get('postBody');
 
-      if (!postBody.trim()) {
+      if (!postBody.trim() || postBody.length > 140) {
+        alert('error');
         return;
       }
 
@@ -32,5 +45,3 @@ var DashboardController = Ember.ArrayController.extend({
     }
   }
 });
-
-export default DashboardController;
