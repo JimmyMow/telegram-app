@@ -22,6 +22,7 @@ export default Ember.Controller.extend({
 
         if( data.password === record.get("password") ) {
           self.set("currentUser", record);
+          self.get('session').set('user', record);
           self.transitionToRoute('dashboard');
         } else {
           alert('here');

@@ -14,7 +14,7 @@
   <nav class="user-nav">
     <h3>Latest Posts</h3>
   </nav>
-
-  {{partial "user/index"}}
-
+  {{#each post in this}}
+    {{post-block post=post session=session}}
+  {{/each}}
 </div>

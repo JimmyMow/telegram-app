@@ -3,10 +3,10 @@
     <img src="images/telegram-logo.png"/>
   {{/link-to}}
 
-  {{#if currentUser}}
+  {{#if session.isAuthenticated}}
     <div class="right-nav">
-      <img {{bind-attr src=currentUser.picture}}>
-      <p class="nav-username">{{currentUser.id}}</p>
+      <img {{bind-attr src=session.user.picture}}>
+      <p class="nav-username">{{session.user.id}}</p>
     </div>
   {{/if}}
 </nav>
