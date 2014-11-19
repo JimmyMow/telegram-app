@@ -1,34 +1,51 @@
-{{belongsToCurrentUser}}
-<li class="user-list">
-  <div class="user-list-container">
-    {{#if post.repost}}
-      <p class="repost">
-        <i class="fa fa-retweet repost-icon"></i>
-        Reposted by {{post.repost.id}}
-      </p>
-    {{/if}}
-    <img src="https://lh6.googleusercontent.com/-hBbaFeCzpFs/AAAAAAAAAAI/AAAAAAAAANA/r02VbznNRIs/w48-c-h48/photo.jpg">
-    <div class="right-side">
-      {{#link-to "user" post.user class="user-link"}}{{post.user.name}}{{/link-to}}
-      <p class="post-body">{{post.body}}</p>
-      <p>
-        <span class="created-at">{{time-delta-in-words completedAt}}</span>
-        {{#if session.isAuthenticated}}
-          {{#unless post.belongsToCurrentUser}}
-            <span class="dot">&#8729;</span>
-            <span class="delete">
-              <a href="#" {{action "repost" post}}>Repost</a>
-            </span>
-          {{/unless}}
-          {{#if post.belongsToCurrentUser}}
-            <span class="dot">&#8729;</span>
-            <span class="delete">
-              <a href="#" {{action "delete" post}}>Delete</a>
-            </span>
-          {{/if}}
-        {{/if}}
-      </p>
-    </div>
-  </div>
-</li>
+{{#if confirmRepost}}
 
+<div class="user-list-container">
+  <i class="fa fa-retweet fa-3x confirm-repost-icon"></i>
+
+  <div class="right-side confirm-repost">
+    <p class='confirm-repost-title'>Repost this to your followers?</p>
+    <span>
+      <a href="#" {{action "repost" true}}>Yes</a>
+    </span>
+    <span class="dot">&#8729;</span>
+    <span>
+      <a href="#" {{action "repost" false}}>No</a>
+    </span>
+  </div>
+</div>
+
+{{else}}
+
+<div class="user-list-container">
+  {{#if post.repost}}
+    <p class="repost">
+      <i class="fa fa-retweet repost-icon"></i>
+      Reposted by {{post.repost.id}}
+    </p>
+  {{/if}}
+  <img src="https://lh6.googleusercontent.com/-hBbaFeCzpFs/AAAAAAAAAAI/AAAAAAAAANA/r02VbznNRIs/w48-c-h48/photo.jpg">
+  <div class="right-side">
+    {{#link-to "user" post.user class="user-link"}}{{post.user.name}}{{/link-to}}
+    <p class="post-body">{{post.body}}</p>
+    <p>
+      <span class="created-at">{{time-delta-in-words completedAt}}</span>
+      {{#if session.isAuthenticated}}
+        {{#unless belongsToCurrentUser}}
+          <span class="dot">&#8729;</span>
+          <span class="delete">
+            <a href="#" {{action "repostClicked"}}>Repost</a>
+          </span>
+        {{/unless}}
+        {{#if belongsToCurrentUser}}
+          <span class="dot">&#8729;</span>
+          <span class="delete">
+            <a href="#" {{action "delete"}}>Delete</a>
+          </span>
+        {{/if}}
+      {{/if}}
+    </p>
+  </div>
+</div>
+
+{{/if}}

@@ -1,28 +1,41 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  belongsToCurrentUser: function(post) {
+  tagName: 'li',
+  classNames: ['user-list'],
 
-  }.property('post.user'),
+  confirmRepost: false,
+
+  belongsToCurrentUser: function() {
+    return this.get('post.user') === this.get('session.user');
+  }.property('post.user', 'session.user'),
 
   actions: {
-    repost: function(post) {
-      var store = this.get('targetObject.store');
+    repostClicked: function() {
+      this.set('confirmRepost', true);
+    },
 
-      var newPost = store.createRecord('post', {
-        body: post.get('body'),
-        createdAt: post.get('createdAt'),
-        repost: this.get('session.user'),
-        user: post.get('user')
-      });
+    repost: function(bool) {
+      if(bool) {
+        var store = this.get('targetObject.store');
 
-      newPost.save();
+        var newPost = store.createRecord('post', {
+          body: this.get('post.body'),
+          createdAt: this.get('post.createdAt'),
+          repost: this.get('session.user'),
+          user: this.get('post.user')
+        });
+
+        newPost.save();
+        this.set('confirmRepost', false);
+      } else {
+        this.set('confirmRepost', false);
+      }
     }
   },
 
-  delete: function(post) {
-    var post = post;
-    post.deleteRecord();
+  delete: function() {
+    var post = this.get('post').deleteRecord();
     post.save();
   }
 });

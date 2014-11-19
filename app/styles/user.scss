@@ -115,3 +115,23 @@
     color: white;
   }
 }
+
+.confirm-repost-icon {
+  background-color: #34ad00;
+  color: white;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.confirm-repost {
+  .confirm-repost-title {
+    margin-bottom: 20px;
+  }
+
+
+  span {
+    a {
+      text-decoration: none;
+    }
+  }
+}
