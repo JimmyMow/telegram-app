@@ -1,13 +1,13 @@
-<nav class="app-nav">
-  {{#link-to "dashboard"}}
-    <img src="images/telegram-logo.png"/>
-  {{/link-to}}
+{{#link-to "dashboard"}}
+  <img src="images/telegram-logo.png"/>
+{{/link-to}}
 
-  {{#if session.isAuthenticated}}
-    <div class="right-nav">
-      <img {{bind-attr src=session.user.picture}}>
-      <p class="nav-username">{{session.user.id}}</p>
-    </div>
-  {{/if}}
-</nav>
+{{#if session.isAuthenticated}}
+  <div class="right-nav">
+    <img {{bind-attr src=session.user.picture}}>
+    <p class="nav-username">{{session.user.id}}</p>
+    <span><a href="#" {{action "signOut"}}>Sign out</a></span>
+  </div>
+{{/if}}
+
 
