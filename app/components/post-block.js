@@ -6,9 +6,10 @@ export default Ember.Component.extend({
 
   confirmRepost: false,
 
-  belongsToCurrentUser: function() {
-    return this.get('post.user') === this.get('session.user');
-  }.property('post.user', 'session.user'),
+  isOwner: function() {
+    var currUser = this.get('session.user.id');
+    return currUser === this.get('post.user.id') || currUser === this.get('post.repost.id');
+  }.property('post.user.id', 'post.repost.id', 'session.user.id'),
 
   actions: {
     repostClicked: function() {
@@ -23,7 +24,10 @@ export default Ember.Component.extend({
           body: this.get('post.body'),
           createdAt: this.get('post.createdAt'),
           repost: this.get('session.user'),
-          user: this.get('post.user')
+        });
+
+        this.get('post.user').then(function(record) {
+          newPost.set('user', record);
         });
 
         newPost.save();
@@ -31,11 +35,11 @@ export default Ember.Component.extend({
       } else {
         this.set('confirmRepost', false);
       }
-    }
-  },
+    },
 
-  delete: function() {
-    var post = this.get('post').deleteRecord();
-    post.save();
+    delete: function() {
+      var post = this.get('post').deleteRecord();
+      post.save();
+    }
   }
 });
