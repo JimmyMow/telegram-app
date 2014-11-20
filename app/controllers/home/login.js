@@ -5,12 +5,6 @@ export default Ember.Controller.extend({
 
   currentUser: Ember.computed.alias('controllers.application.currentUser'),
 
-  // checkForUser: function() {
-  //   if( this.get('currentUser') ) {
-  //     this.transitionToRoute('dashboard');
-  //   }
-  // }.on('init'),
-
   errorMessage: false,
 
   actions: {
@@ -28,9 +22,10 @@ export default Ember.Controller.extend({
           alert('here');
           self.set('errorMessage', 'Your username or password was incorrect :(');
         }
-
       });
 
+      this.set('username', '');
+      this.set('password', '');
     }
   }
 });

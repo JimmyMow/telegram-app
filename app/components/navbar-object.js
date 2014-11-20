@@ -7,6 +7,8 @@ export default Ember.Component.extend({
   actions: {
     signOut: function() {
       this.set('session.user', null);
+      var controller = this.get('targetObject');
+      controller.transitionToRoute('/login');
     }
   }
 });
