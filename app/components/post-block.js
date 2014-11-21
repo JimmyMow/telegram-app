@@ -26,7 +26,7 @@ export default Ember.Component.extend({
           repost: this.get('session.user'),
         });
 
-        this.get('post.user').then(function(record) {
+        this.get("post.user").then(function(record) {
           newPost.set('user', record);
         });
 
