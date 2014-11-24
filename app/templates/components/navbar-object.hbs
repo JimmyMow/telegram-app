@@ -4,8 +4,10 @@
 
 {{#if session.isAuthenticated}}
   <div class="right-nav">
-    <img {{bind-attr src=session.user.picture}}>
-    <p class="nav-username">{{session.user.id}}</p>
+    {{#link-to 'user' session.user.id}}
+      <img {{bind-attr src=session.user.picture}}>
+      <p class="nav-username">{{session.user.id}}</p>
+    {{/link-to}}
     <span><a href="#" {{action "signOut"}}>Sign out</a></span>
   </div>
 {{/if}}

@@ -32,14 +32,12 @@
       <span class="created-at">{{time-delta-in-words completedAt}}</span>
       {{#if session.isAuthenticated}}
         {{#unless isOwner}}
-          <span class="dot">&#8729;</span>
           <span class="delete">
             <a href="#" {{action "repostClicked"}}>Repost</a>
           </span>
         {{/unless}}
 
         {{#if isOwner}}
-          <span class="dot">&#8729;</span>
           <span class="delete">
             <a href="#" {{action "delete"}}>Delete</a>
           </span>
