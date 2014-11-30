@@ -1,10 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  needs: ['application'],
-
-  currentUser: Ember.computed.alias('controllers.application.currentUser'),
-
   errorMessage: false,
 
   actions: {
@@ -15,8 +11,7 @@ export default Ember.Controller.extend({
       this.store.find("user", data.username).then(function(record) {
 
         if( data.password === record.get("password") ) {
-          self.set("currentUser", record);
-          self.get('session').set('user', record);
+          self.set('session.user', record);
           self.transitionToRoute('dashboard');
         } else {
           alert('here');

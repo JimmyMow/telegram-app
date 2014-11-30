@@ -4,7 +4,7 @@
 
 {{#if session.isAuthenticated}}
   <div class="right-nav">
-    {{#link-to 'user' session.user.id}}
+    {{#link-to 'user.posts' session.user.id}}
       <img {{bind-attr src=session.user.picture}}>
       <p class="nav-username">{{session.user.id}}</p>
     {{/link-to}}

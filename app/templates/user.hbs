@@ -1,4 +1,4 @@
-{{navbar-object currentUser=currentUser}}
+{{navbar-object session=session}}
 
 <div class="user-container">
   <div class="user-header">
@@ -12,7 +12,7 @@
   </div>
 
   <nav class="user-nav">
-    {{#link-to "user.index"}}Posts{{/link-to}}
+    {{#link-to "user.posts"}}Posts{{/link-to}}
     {{#link-to "user.followers"}}Followers{{/link-to}}
     {{#link-to "user.following"}}Following{{/link-to}}
   </nav>

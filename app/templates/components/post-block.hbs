@@ -26,7 +26,7 @@
   {{/if}}
   <img src="https://lh6.googleusercontent.com/-hBbaFeCzpFs/AAAAAAAAAAI/AAAAAAAAANA/r02VbznNRIs/w48-c-h48/photo.jpg">
   <div class="right-side">
-    {{#link-to "user" post.user class="user-link"}}{{post.user.name}}{{/link-to}}
+    {{#link-to "user.posts" post.user class="user-link"}}{{post.user.name}}{{/link-to}}
     <p class="post-body">{{post.body}}</p>
     <p>
       <span class="created-at">{{time-delta-in-words completedAt}}</span>

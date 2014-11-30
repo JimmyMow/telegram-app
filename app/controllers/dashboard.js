@@ -1,16 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-  belowLimit: false,
+  belowLimit: function() {
+    return this.get('postCharactersLeft') < 0;
+  }.property('postCharactersLeft'),
 
   postCharactersLeft: function() {
-    var returnVal = 140 - (this.get('postBody') || '').length;
-
-    if( returnVal < 0 ) {
-      this.set('belowLimit', true);
-    }
-
-    return returnVal;
+    return 140 - (this.get('postBody') || '').length;
   }.property('postBody'),
 
 

@@ -1,10 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  needs: ['application'],
-
-  currentUser: Ember.computed.alias('controllers.application.currentUser'),
-
   actions: {
     createUser: function() {
       var self = this;
@@ -19,7 +15,7 @@ export default Ember.Controller.extend({
       });
 
       user.save().then(function() {
-        self.set("currentUser", user);
+        self.set('session.user', user);
         self.transitionToRoute('dashboard');
       });
     }
