@@ -38,7 +38,7 @@ export default Ember.Component.extend({
     },
 
     delete: function() {
-      var post = this.get('post').destroyRecord();
+      this.get('post').destroyRecord();
     }
   }
 });

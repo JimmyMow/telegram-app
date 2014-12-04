@@ -27,7 +27,9 @@ export default Ember.ArrayController.extend({
 
       this.set('postBody', '');
 
-      post.save();
+      post.get('user').then(function() {
+        post.save();
+      });
     }
   }
 });
