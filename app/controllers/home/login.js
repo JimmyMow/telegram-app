@@ -6,9 +6,9 @@ export default Ember.Controller.extend({
   actions: {
     login: function() {
       var self = this;
-      var data = this.getProperties("username", "password");
+      var credientials = this.getProperties("username", "password");
 
-      this.store.find("user", {id: data.username, password: data.password, operation: 'login'}).then(function(recordArray) {
+      this.store.find("user", {id: credientials.username, password: credientials.password, operation: 'login'}).then(function(recordArray) {
         if( recordArray.get('firstObject') ) {
           self.set('session.user', recordArray.get('firstObject'));
           self.transitionToRoute('dashboard');
