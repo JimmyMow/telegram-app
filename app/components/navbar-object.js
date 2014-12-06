@@ -6,9 +6,18 @@ export default Ember.Component.extend({
 
   actions: {
     signOut: function() {
-      this.set('session.user', null);
       var controller = this.get('targetObject');
-      controller.transitionToRoute('/login');
+      Ember.$.ajax({
+       url: '/api/logout',
+       type: 'GET'
+      }).then(function(response) {
+          if(response){
+            controller.set('session.user', null);
+            controller.transitionToRoute('/login');
+          } else {
+            alert("There was an error signing you out");
+          }
+      });
     }
   }
 });
