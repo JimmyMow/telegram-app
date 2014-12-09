@@ -30,7 +30,9 @@ export default Ember.Component.extend({
           newPost.set('user', record);
         });
 
-        newPost.save();
+        newPost.get('repost').then(function() {
+          newPost.save();
+        });
         this.set('confirmRepost', false);
       } else {
         this.set('confirmRepost', false);

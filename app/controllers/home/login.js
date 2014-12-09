@@ -13,7 +13,6 @@ export default Ember.Controller.extend({
           self.set('session.user', recordArray.get('firstObject'));
           self.transitionToRoute('dashboard');
         } else {
-          alert('here');
           self.set('errorMessage', 'Your username or password was incorrect :(');
         }
       });

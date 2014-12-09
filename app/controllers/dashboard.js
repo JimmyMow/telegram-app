@@ -22,7 +22,8 @@ export default Ember.ArrayController.extend({
       var post = this.store.createRecord('post', {
         body: postBody,
         createdAt: new Date(),
-        user: this.get("session.user")
+        user: this.get("session.user"),
+        repost: null
       });
 
       this.set('postBody', '');
