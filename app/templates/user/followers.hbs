@@ -1,13 +1,13 @@
 {{#each}}
-  <li>
-    <div class="user-list-container">
-      <img src="https://lh6.googleusercontent.com/-hBbaFeCzpFs/AAAAAAAAAAI/AAAAAAAAANA/r02VbznNRIs/w48-c-h48/photo.jpg">
-      {{#link-to "user.posts" this class="user-link"}}{{id}}{{/link-to}}
 
-      <form>
-        <input type="submit" value="Follow">
-      </form>
-    </div>
-  </li>
+<li class="user-list">
+  <div class="user-list-container">
+    <img src="https://lh6.googleusercontent.com/-hBbaFeCzpFs/AAAAAAAAAAI/AAAAAAAAANA/r02VbznNRIs/w48-c-h48/photo.jpg">
+    {{#link-to "user.posts" this class="user-link"}}{{id}}{{/link-to}}
+
+    {{follow-button user=this}}
+  </div>
+</li>
+
 {{/each}}
 
