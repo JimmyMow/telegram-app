@@ -1,4 +1,13 @@
+{{#if user.followedByCurrentUser}}
+
+<form {{action "unfollow" on="submit"}}>
+  {{input type="submit" value="Unfollow"}}
+</form>
+
+{{else}}
+
 <form {{action "follow" on="submit"}}>
   {{input type="submit" value="Follow"}}
 </form>
 
+{{/if}}

@@ -5,10 +5,30 @@ export default Ember.Component.extend({
 
   actions: {
     follow: function() {
-      var _this = this.get('targetObject');
-      var currUser = _this.get('session.user.id');
-      _this.store.find("user", {follow: this.get('user.id')}).then(function(res) {
-        console.log(res);
+      var controller = this.get('targetObject');
+      var _this = this;
+      controller.store.find("user", {follow: this.get('user.id'), operation: 'follow'}).then(function(usersArray) {
+        if( usersArray.get('firstObject') ) {
+          var user = _this.get('user');
+          user.set('followedByCurrentUser', true);
+          user.save();
+        } else {
+          // Do something
+        }
+      });
+    },
+
+    unfollow: function() {
+      var controller = this.get('targetObject');
+      var _this = this;
+      controller.store.find("user", {unfollow: this.get('user.id'), operation: 'unfollow'}).then(function(usersArray) {
+        if( usersArray.get('firstObject') ) {
+          var user = _this.get('user');
+          user.set('followedByCurrentUser', false);
+          user.save();
+        } else {
+          // Do something
+        }
       });
     }
   }
