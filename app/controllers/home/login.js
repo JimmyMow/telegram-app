@@ -7,15 +7,23 @@ export default Ember.Controller.extend({
     login: function() {
       var self = this;
       var credientials = this.getProperties("username", "password");
+      var user = this.store.createRecord('user', {
+        id: credientials.username,
+        password: credientials.password,
+        operation: 'login'
+      });
 
-      this.store.find("user", {id: credientials.username, password: credientials.password, operation: 'login'}).then(function(recordArray) {
-        if( recordArray.get('firstObject') ) {
-          self.set('session.user', recordArray.get('firstObject'));
+      user.save().then(function(user) {
+        if( user ) {
+          self.set('session.user', user);
           self.transitionToRoute('dashboard');
         } else {
           self.set('errorMessage', 'Your username or password was incorrect :(');
         }
+      }, function(response) {
+        alert(response);
       });
+
 
       this.set('username', '');
       this.set('password', '');
