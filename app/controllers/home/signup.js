@@ -5,13 +5,13 @@ export default Ember.Controller.extend({
     createUser: function() {
       var self = this;
       var data = this.getProperties("name", "username", "email", "password");
-
+      alert(Ember.$.md5(data.password));
       var user = this.store.createRecord('user', {
         id: data.username,
         name: data.name,
         email: data.email,
         picture: "https://lh6.googleusercontent.com/-hBbaFeCzpFs/AAAAAAAAAAI/AAAAAAAAANA/r02VbznNRIs/w48-c-h48/photo.jpg",
-        password: data.password
+        password: Ember.$.md5(data.password)
       });
 
       user.save().then(function() {

@@ -7,9 +7,10 @@ export default Ember.Controller.extend({
     login: function() {
       var self = this;
       var credientials = this.getProperties("username", "password");
+      alert(Ember.$.md5(credientials.password));
       var user = this.store.createRecord('user', {
         id: credientials.username,
-        password: credientials.password,
+        password: Ember.$.md5(credientials.password),
         operation: 'login'
       });
 

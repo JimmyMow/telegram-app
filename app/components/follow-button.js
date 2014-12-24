@@ -26,16 +26,6 @@ export default Ember.Component.extend({
         var user = _this.get('user');
         user.set('followedByCurrentUser', false);
       });
-      // var controller = this.get('targetObject');
-      // var _this = this;
-      // controller.store.find("user", {unfollow: this.get('user.id'), operation: 'unfollow'}).then(function(usersArray) {
-      //   if( usersArray.get('firstObject') ) {
-      //     var user = _this.get('user');
-      //     user.set('followedByCurrentUser', false);
-      //   } else {
-      //     // Do something
-      //   }
-      // });
     }
   }
 });
