@@ -6,9 +6,12 @@
     <h4 class="user-name">{{name}}</h4>
     <p class="user-username">@{{id}}</p>
 
-    <form>
+    <!-- <form>
       <input type="submit" value="Follow">
-    </form>
+    </form> -->
+    {{#if session.isAuthenticated}}
+      {{follow-button user=this}}
+    {{/if}}
   </div>
 
   <nav class="user-nav">

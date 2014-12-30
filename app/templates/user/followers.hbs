@@ -5,7 +5,9 @@
     <img src="https://lh6.googleusercontent.com/-hBbaFeCzpFs/AAAAAAAAAAI/AAAAAAAAANA/r02VbznNRIs/w48-c-h48/photo.jpg">
     {{#link-to "user.posts" this class="user-link"}}{{id}}{{/link-to}}
 
-    {{follow-button user=this}}
+    <div class="user-follow-button-container">
+      {{follow-button user=this}}
+    </div>
   </div>
 </li>
 
