@@ -14,6 +14,8 @@ export default Ember.Component.extend({
           if(response){
             controller.set('session.user', null);
             controller.transitionToRoute('/login');
+            controller.store.unloadAll('user');
+            controller.store.unloadAll('post');
           } else {
             alert("There was an error signing you out");
           }
