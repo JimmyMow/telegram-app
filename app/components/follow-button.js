@@ -11,8 +11,7 @@ export default Ember.Component.extend({
       currUser.set('operation', 'follow');
       currUser.set('userId', this.get('user.id'));
       currUser.save().then(function(user){
-        var user = _this.get('user');
-        user.set('followedByCurrentUser', true);
+        _this.get('user').set('followedByCurrentUser', true);
       });
     },
 
@@ -23,8 +22,7 @@ export default Ember.Component.extend({
       currUser.set('operation', 'unfollow');
       currUser.set('userId', this.get('user.id'));
       currUser.save().then(function(user){
-        var user = _this.get('user');
-        user.set('followedByCurrentUser', false);
+        _this.get('user').set('followedByCurrentUser', false);
       });
     }
   }
