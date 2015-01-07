@@ -12,7 +12,6 @@ export default Ember.Controller.extend({
       user.save().then(function(success) {
         if( success ) {
           self.set('emailField', '');
-          alert("Success! " + success);
         }
       }, function(error) {
         alert("Error! " + error);
