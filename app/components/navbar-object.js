@@ -9,7 +9,7 @@ export default Ember.Component.extend({
       var controller = this.get('targetObject');
       Ember.$.ajax({
        url: '/api/logout',
-       type: 'GET'
+       type: 'POST'
       }).then(function(response) {
           if(response){
             controller.set('session.user', null);

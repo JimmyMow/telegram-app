@@ -12,6 +12,7 @@ export default Ember.ArrayController.extend({
 
   actions: {
     createPost: function() {
+      var _this = this;
       var postBody = this.get('postBody');
 
       if (!postBody.trim() || postBody.length > 140) {
@@ -22,14 +23,15 @@ export default Ember.ArrayController.extend({
       var post = this.store.createRecord('post', {
         body: postBody,
         createdAt: new Date(),
-        user: this.get("session.user"),
-        repost: null
+        creator: this.get("session.user"),
+        originalCreator: this.get("session.user")
       });
 
       this.set('postBody', '');
-
-      post.get('user').then(function() {
-        post.save();
+      post.get('creator').then(function() {
+        post.save().then(function() {
+          _this.get('model.content').pushObject(post);
+        });
       });
     }
   }

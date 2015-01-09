@@ -18,18 +18,22 @@
 {{else}}
 
 <div class="user-list-container">
-  {{#if post.repost}}
+  {{#if isRepost}}
     <p class="repost">
       <i class="fa fa-retweet repost-icon"></i>
-      Reposted by {{post.repost.id}}
+      Reposted by {{post.creator.id}}
     </p>
   {{/if}}
   <img src="https://lh6.googleusercontent.com/-hBbaFeCzpFs/AAAAAAAAAAI/AAAAAAAAANA/r02VbznNRIs/w48-c-h48/photo.jpg">
   <div class="right-side">
-    {{#link-to "user.posts" post.user class="user-link"}}{{post.user.name}}{{/link-to}}
+    {{#if isRepost}}
+      {{#link-to "user.posts" post.creator class="user-link"}}{{post.originalCreator.id}}{{/link-to}}
+    {{else}}
+      {{#link-to "user.posts" post.creator class="user-link"}}{{post.creator.id}}{{/link-to}}
+    {{/if}}
     <p class="post-body">{{post.body}}</p>
     <p>
-      <span class="created-at">{{time-delta-in-words completedAt}}</span>
+      <span class="created-at">{{time-delta-in-words post.createdAt}}</span>
       {{#if session.isAuthenticated}}
         {{#unless isOwner}}
           <span class="delete">

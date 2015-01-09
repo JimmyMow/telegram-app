@@ -8,8 +8,12 @@ export default Ember.Component.extend({
 
   isOwner: function() {
     var currUser = this.get('session.user.id');
-    return currUser === this.get('post.user.id') || currUser === this.get('post.repost.id');
-  }.property('post.user.id', 'post.repost.id', 'session.user.id'),
+    return currUser === this.get('post.creator.id');
+  }.property('post.creator.id', 'session.user.id'),
+
+  isRepost: function() {
+    return this.get('post.creator.id') !== this.get('post.originalCreator.id');
+  }.property('post.creator.id', 'post.originalCreator.id'),
 
   actions: {
     repostClicked: function() {
@@ -23,14 +27,14 @@ export default Ember.Component.extend({
         var newPost = store.createRecord('post', {
           body: this.get('post.body'),
           createdAt: this.get('post.createdAt'),
-          repost: this.get('session.user'),
+          creator: this.get('session.user'),
         });
 
-        this.get("post.user").then(function(record) {
-          newPost.set('user', record);
+        this.get("post.creator").then(function(record) {
+          newPost.set('originalCreator', record);
         });
 
-        newPost.get('repost').then(function() {
+        newPost.get('creator').then(function() {
           newPost.save();
         });
         this.set('confirmRepost', false);
